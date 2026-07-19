@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vinay Kumar Naguru — Technical Lead, Cloud Infrastructure &amp; DevOps</title>
+<meta name="description" content="Vinay Kumar Naguru — 13+ years in Cloud Infrastructure, DevOps, AWS, Terraform, Kubernetes and IT Systems Leadership.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0F1115;
+    --panel: #171A21;
+    --panel-2: #1D212A;
+    --line: #272C36;
+    --line-bright: #3A414F;
+    --text: #E8EAED;
+    --muted: #8B93A1;
+    --muted-2: #5C6472;
+    --amber: #F5A623;
+    --teal: #4FD1C5;
+    --radius: 3px;
+    --grid-line: rgba(255,255,255,0.015);
+  }
+  html[data-theme="light"]{
+    --bg: #F6F5F1;
+    --panel: #FFFFFF;
+    --panel-2: #F0EEE8;
+    --line: #E2DFD6;
+    --line-bright: #C9C5B8;
+    --text: #1B1C1E;
+    --muted: #5B5F66;
+    --muted-2: #8A8D93;
+    --amber: #C9791A;
+    --teal: #0E8E80;
+    --grid-line: rgba(0,0,0,0.03);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    transition: background .35s ease, color .35s ease;
+  }
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 48px 48px;
+    transition: background .35s ease;
+    pointer-events:none;
+    z-index:0;
+  }
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 32px; position:relative; z-index:1;}
+  ::selection{background:var(--amber); color:#0F1115;}
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{outline:2px solid var(--teal); outline-offset:3px;}
+
+  /* NAV */
+  header.topbar{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    background:rgba(15,17,21,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1120px; margin:0 auto; padding:0 32px;
+    height:64px; display:flex; align-items:center; justify-content:space-between;
+  }
+  .logo{font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:15px; letter-spacing:0.04em;}
+  .logo span{color:var(--amber);}
+  nav.links{display:flex; gap:28px; align-items:center;}
+  nav.links a{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.08em;
+    color:var(--muted); text-transform:uppercase; transition:color .2s ease;
+  }
+  nav.links a:hover{color:var(--text);}
+  .status-chip{
+    display:flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.06em;
+    color:var(--teal); text-transform:uppercase;
+    border:1px solid var(--line-bright); border-radius:20px;
+    padding:6px 12px 6px 10px;
+  }
+  .dot{width:7px; height:7px; border-radius:50%; background:var(--teal); box-shadow:0 0 8px var(--teal); animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;} 50%{opacity:0.35;}}
+  .menu-toggle{display:none; flex-direction:column; gap:4px; background:none; border:none; cursor:pointer; padding:8px;}
+  .menu-toggle span{width:20px; height:2px; background:var(--text);}
+
+  /* THEME TOGGLE */
+  .theme-toggle{
+    position:relative; width:52px; height:28px; border-radius:20px;
+    background:var(--panel-2); border:1px solid var(--line-bright);
+    cursor:pointer; flex-shrink:0; padding:0; transition:background .3s ease, border-color .3s ease;
+  }
+  .theme-toggle .knob{
+    position:absolute; top:2px; left:2px; width:22px; height:22px; border-radius:50%;
+    background:var(--amber); display:flex; align-items:center; justify-content:center;
+    transition:transform .3s cubic-bezier(.4,0,.2,1), background .3s ease;
+    box-shadow:0 1px 3px rgba(0,0,0,0.3);
+  }
+  html[data-theme="light"] .theme-toggle .knob{ transform:translateX(24px); background:var(--teal); }
+  .theme-toggle svg{width:13px; height:13px; display:block;}
+  .theme-toggle .knob svg{color:#14110A;}
+
+  /* HERO */
+  .hero{
+    padding:150px 0 90px;
+    display:grid; grid-template-columns: 1.1fr 0.9fr; gap:56px; align-items:start;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.14em;
+    color:var(--amber); text-transform:uppercase; margin-bottom:18px; display:block;
+  }
+  h1.name{
+    font-family:'IBM Plex Mono', monospace; font-weight:700;
+    font-size:clamp(34px, 4.6vw, 58px); line-height:1.05; letter-spacing:-0.01em;
+    margin-bottom:18px;
+  }
+  .role{
+    font-size:19px; color:var(--muted); font-weight:500; margin-bottom:22px;
+    max-width:520px;
+  }
+  .role strong{color:var(--text); font-weight:600;}
+  .summary{color:var(--muted); font-size:15.5px; max-width:520px; margin-bottom:34px;}
+  .cta-row{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    font-family:'IBM Plex Mono', monospace; font-size:13px; letter-spacing:0.03em;
+    padding:13px 22px; border-radius:var(--radius); border:1px solid var(--line-bright);
+    display:inline-flex; align-items:center; gap:8px; transition:all .2s ease;
+  }
+  .btn-primary{background:var(--amber); color:#14110A; border-color:var(--amber); font-weight:600;}
+  .btn-primary:hover{background:#ffb741; transform:translateY(-1px);}
+  .btn-ghost{color:var(--text);}
+  .btn-ghost:hover{border-color:var(--teal); color:var(--teal);}
+
+  /* dashboard panel */
+  .panel{
+    background:var(--panel); border:1px solid var(--line); border-radius:6px;
+    padding:0; overflow:hidden;
+  }
+  .panel-head{
+    display:flex; align-items:center; gap:8px; padding:12px 16px;
+    border-bottom:1px solid var(--line); background:var(--panel-2);
+  }
+  .panel-head .dots{display:flex; gap:6px;}
+  .panel-head .dots i{width:9px; height:9px; border-radius:50%; background:var(--line-bright); display:block;}
+  .panel-head span.label{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--muted-2);
+    letter-spacing:0.08em; margin-left:6px; text-transform:uppercase;
+  }
+  .panel-body{padding:22px;}
+  .metric-row{
+    display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:22px;
+  }
+  .metric .num{font-family:'IBM Plex Mono', monospace; font-size:26px; font-weight:700; color:var(--teal);}
+  .metric .lab{font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:var(--muted-2); letter-spacing:0.07em; text-transform:uppercase; margin-top:4px;}
+  .stack-tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:6px;}
+  .tag{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; padding:5px 10px;
+    border:1px solid var(--line-bright); border-radius:20px; color:var(--muted);
+  }
+
+  section{padding:80px 0; border-top:1px solid var(--line); position:relative; z-index:1;}
+  .section-head{display:flex; align-items:baseline; gap:16px; margin-bottom:44px;}
+  .section-head .idx{font-family:'IBM Plex Mono', monospace; color:var(--muted-2); font-size:13px;}
+  .section-head h2{font-family:'IBM Plex Mono', monospace; font-size:26px; font-weight:600; letter-spacing:-0.01em;}
+  .section-head .rule{flex:1; height:1px; background:var(--line);}
+
+  /* ABOUT */
+  .about-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:56px;}
+  .about-grid p{color:var(--muted); font-size:16px; margin-bottom:16px;}
+  .about-grid p strong{color:var(--text);}
+  .fact-list{display:flex; flex-direction:column; gap:16px;}
+  .fact{display:flex; justify-content:space-between; border-bottom:1px solid var(--line); padding-bottom:12px; font-size:14px;}
+  .fact .k{font-family:'IBM Plex Mono', monospace; color:var(--muted-2); text-transform:uppercase; letter-spacing:0.06em; font-size:11.5px;}
+  .fact .v{color:var(--text); text-align:right;}
+
+  /* EXPERIENCE - deployment log */
+  .log{position:relative; padding-left:28px;}
+  .log::before{content:""; position:absolute; left:5px; top:6px; bottom:6px; width:1px; background:var(--line);}
+  .entry{position:relative; margin-bottom:44px;}
+  .entry:last-child{margin-bottom:0;}
+  .entry::before{
+    content:""; position:absolute; left:-28px; top:6px; width:11px; height:11px;
+    border-radius:50%; background:var(--bg); border:2px solid var(--teal);
+  }
+  .entry.current::before{background:var(--amber); border-color:var(--amber); box-shadow:0 0 10px var(--amber);}
+  .entry-meta{
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--muted-2);
+    text-transform:uppercase; letter-spacing:0.06em; margin-bottom:6px; display:flex; gap:10px; flex-wrap:wrap;
+  }
+  .entry-meta .dur{color:var(--teal);}
+  .entry h3{font-size:19px; font-weight:600; margin-bottom:2px;}
+  .entry .company{color:var(--muted); font-size:14.5px; margin-bottom:14px;}
+  .entry .company b{color:var(--text); font-weight:600;}
+  .entry.compact{margin-bottom:26px;}
+  .entry.compact .company{margin-bottom:0;}
+  .entry.compact::before{top:5px;}
+  .entry ul{list-style:none; display:flex; flex-direction:column; gap:8px;}
+  .entry ul li{
+    color:var(--muted); font-size:14.5px; padding-left:18px; position:relative;
+  }
+  .entry ul li::before{
+    content:"›"; position:absolute; left:0; color:var(--amber); font-family:'IBM Plex Mono', monospace;
+  }
+
+  /* SKILLS */
+  .skills-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:22px;}
+  .skill-card{background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:24px;}
+  .skill-card h4{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--amber);
+    letter-spacing:0.08em; text-transform:uppercase; margin-bottom:16px;
+  }
+  .skill-card .stack-tags .tag{color:var(--text); border-color:var(--line-bright);}
+
+  /* CERTS / AWARDS */
+  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:56px;}
+  .cred-list{display:flex; flex-direction:column; gap:2px;}
+  .cred{
+    display:flex; justify-content:space-between; align-items:center; gap:12px;
+    padding:14px 0; border-bottom:1px solid var(--line); font-size:14.5px;
+  }
+  .cred .name{color:var(--text);}
+  .cred .tick{font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--teal);}
+
+  /* EDUCATION */
+  .edu-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:26px;
+    display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap;
+  }
+  .edu-card h3{font-size:18px; font-weight:600; margin-bottom:4px;}
+  .edu-card p{color:var(--muted); font-size:14.5px;}
+  .edu-card .years{font-family:'IBM Plex Mono', monospace; color:var(--amber); font-size:13px;}
+
+  /* CONTACT / FOOTER */
+  footer{padding:80px 0 40px;}
+  .contact-panel{
+    background:var(--panel); border:1px solid var(--line); border-radius:8px;
+    padding:48px; text-align:center; margin-bottom:40px;
+  }
+  .contact-panel h2{font-family:'IBM Plex Mono', monospace; font-size:28px; margin-bottom:14px;}
+  .contact-panel p{color:var(--muted); margin-bottom:28px; font-size:15.5px;}
+  .contact-row{display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
+  .foot-bottom{display:flex; justify-content:space-between; color:var(--muted-2); font-family:'IBM Plex Mono', monospace; font-size:12px; flex-wrap:wrap; gap:10px;}
+
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{transition:none; opacity:1; transform:none;}
+    .dot{animation:none;}
+  }
+
+  @media (max-width: 900px){
+    .hero{grid-template-columns:1fr; padding-top:130px;}
+    .about-grid, .two-col{grid-template-columns:1fr; gap:32px;}
+    .skills-grid{grid-template-columns:1fr;}
+    nav.links{display:none;}
+    .menu-toggle{display:flex;}
+  }
+  @media (max-width: 560px){
+    .wrap{padding:0 20px;}
+    .metric-row{grid-template-columns:1fr 1fr;}
+    .contact-panel{padding:32px 22px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="nav-inner">
+    <div class="logo">VKN<span>_</span></div>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#credentials">Credentials</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="status-chip"><span class="dot"></span>Portfolio Under Construction</div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark theme" aria-pressed="false">
+      <span class="knob">
+        <svg id="knobIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+      </span>
+    </button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero" id="top">
+    <div>
+      <span class="eyebrow mono">// Cloud Infrastructure &amp; DevOps</span>
+      <h1 class="name">Vinay Kumar<br>Naguru</h1>
+      <p class="role">Technical Lead building and running <strong>reliable, secure cloud infrastructure</strong> — AWS, Azure, GCP, Kubernetes, and the pipelines that ship to them.</p>
+      <p class="summary">13+ years across Windows and Linux infrastructure, DevOps and CI/CD, cloud architecture, and IT service management. I design systems that stay up, automate the parts that shouldn't be manual, and mentor the engineers who keep them running.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="mailto:naguruvinaykumar17@gmail.com">Email me</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/vinay-kumar-naguru-04b934140" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="btn btn-ghost" href="tel:+919618852899">+91 96188 52899</a>
+      </div>
+    </div>
+
+    <div class="panel reveal">
+      <div class="panel-head">
+        <div class="dots"><i></i><i></i><i></i></div>
+        <span class="label">system_status.log</span>
+      </div>
+      <div class="panel-body">
+        <div class="metric-row">
+          <div class="metric"><div class="num">13+</div><div class="lab">Years in infrastructure</div></div>
+          <div class="metric"><div class="num">99.99%</div><div class="lab">Platform uptime achieved</div></div>
+          <div class="metric"><div class="num">40%</div><div class="lab">Faster environment provisioning</div></div>
+          <div class="metric"><div class="num">20%+</div><div class="lab">Annual cloud cost saved</div></div>
+        </div>
+        <div class="lab" style="margin-bottom:8px;">Core stack</div>
+        <div class="stack-tags">
+          <span class="tag">AWS</span><span class="tag">Azure</span><span class="tag">GCP</span>
+          <span class="tag">Terraform</span><span class="tag">Kubernetes</span><span class="tag">Docker</span>
+          <span class="tag">Python</span><span class="tag">Ansible</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-head"><span class="idx mono">01</span><h2>About</h2><div class="rule"></div></div>
+    <div class="about-grid">
+      <div class="reveal">
+        <p>I currently work as <strong>Technical Lead at Coforge</strong>, where I architect cloud infrastructure spanning AWS, Azure, and GCP and lead the team responsible for CI/CD delivery. Before that, I spent years as a <strong>Senior and Lead System Administrator</strong> across enterprise environments — hardening security, automating provisioning, and cutting incident response time.</p>
+        <p>My background started in hands-on Windows and Linux administration, and grew into cloud architecture and DevOps leadership. Along the way I've supported everything from executive-level IT operations to large-scale infrastructure migrations, always with the same focus: <strong>keep systems stable, secure, and easy to operate</strong>.</p>
+      </div>
+      <div class="fact-list reveal">
+        <div class="fact"><span class="k">Based in</span><span class="v">Hyderabad, India</span></div>
+        <div class="fact"><span class="k">Current role</span><span class="v">Technical Lead, Coforge</span></div>
+        <div class="fact"><span class="k">Focus</span><span class="v">Cloud Infra · DevOps · SRE</span></div>
+        <div class="fact"><span class="k">Languages</span><span class="v">English, Telugu, Hindi</span></div>
+        <div class="fact"><span class="k">Education</span><span class="v">B.Com (Computers)</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="section-head"><span class="idx mono">02</span><h2>Experience</h2><div class="rule"></div></div>
+    <div class="log">
+
+      <div class="entry current reveal">
+        <div class="entry-meta">May 2026 — Present <span class="dur">· 3 mo</span></div>
+        <h3>Technical Lead</h3>
+        <div class="company"><b>Coforge</b> · Hyderabad</div>
+        <ul>
+          <li>Architected and maintained scalable cloud infrastructure across AWS, Azure, and GCP, lifting platform uptime to 99.99%</li>
+          <li>Led a team designing and managing automated CI/CD pipelines to accelerate code delivery</li>
+          <li>Implemented Infrastructure as Code with Terraform and Ansible, cutting manual provisioning time by 40%</li>
+          <li>Orchestrated containerized workloads with Docker and Kubernetes for microservices deployment</li>
+          <li>Built proactive monitoring with Datadog and Prometheus to reduce Mean Time to Resolution</li>
+          <li>Enforced IAM, security frameworks, and compliance standards across all infrastructure layers</li>
+          <li>Optimized cloud architecture cost, saving 20%+ on annual spend</li>
+          <li>Directed incident response and root cause analysis for critical production issues; mentored junior engineers</li>
+        </ul>
+      </div>
+
+      <div class="entry reveal">
+        <div class="entry-meta">Jan 2023 — May 2026 <span class="dur">· 3 yr 5 mo</span></div>
+        <h3>Lead System Administrator</h3>
+        <div class="company"><b>Encora Inc.</b> · Hyderabad</div>
+        <ul>
+          <li>Mentored the team on new tasks and monitored daily operations</li>
+          <li>Managed critical issues end-to-end and documented resolutions for future reference</li>
+          <li>Used AWS, DevOps practices, and Terraform to run day-to-day infrastructure operations smoothly</li>
+        </ul>
+      </div>
+
+      <div class="entry reveal">
+        <div class="entry-meta">May 2019 — Jan 2023 <span class="dur">· 3 yr 9 mo</span></div>
+        <h3>Lead / Senior System Administrator</h3>
+        <div class="company"><b>Excellarate</b> · Hyderabad, Telangana</div>
+        <ul>
+          <li>Managed the Jira board for ticket resolution, ensuring timely service restarts and SQL script execution</li>
+          <li>Onboarded customer servers and maintained applications with minimal latency</li>
+          <li>Ran monthly server and application updates to ensure system stability</li>
+          <li>Patched service releases to enhance system performance</li>
+        </ul>
+      </div>
+
+      <div class="entry reveal">
+        <div class="entry-meta">Aug 2018 — Apr 2019 <span class="dur">· 9 mo</span></div>
+        <h3>Senior System Administrator</h3>
+        <div class="company"><b>Apps Associates</b> · Hyderabad</div>
+        <ul>
+          <li>Managed cloud infrastructure and automated provisioning with Terraform and Ansible</li>
+          <li>Designed and optimized Windows and Linux enterprise environments</li>
+          <li>Supported migration projects and security compliance audits</li>
+        </ul>
+      </div>
+
+      <div class="entry reveal">
+        <div class="entry-meta">Oct 2016 — Apr 2018 <span class="dur">· 1 yr 7 mo</span></div>
+        <h3>IT System Engineer</h3>
+        <div class="company"><b>YASH Technologies</b> · Hyderabad Area</div>
+        <ul>
+          <li>Administered Windows Server environments, Active Directory, and DNS configurations</li>
+          <li>Provided technical support and managed ticket resolution within ITIL-based SLAs</li>
+          <li>Received the Best Implementor Award for deploying IPPlan on CentOS</li>
+        </ul>
+      </div>
+
+      <div class="entry reveal compact">
+        <div class="entry-meta">May 2018 — Aug 2018 <span class="dur">· 4 mo</span></div>
+        <h3>Senior Systems Administrator</h3>
+        <div class="company"><b>Vedic Systems</b> · Hyderabad — freelance infrastructure setup for Octane Hosting Networks</div>
+      </div>
+
+      <div class="entry reveal compact">
+        <div class="entry-meta">Jun 2016 — Oct 2016 <span class="dur">· 5 mo</span></div>
+        <h3>Senior System Engineer</h3>
+        <div class="company"><b>Karsun Solutions</b> · Hyderabad — Priority Systems Engineer for a C-level client, providing white-glove L3 support and privileged access management for executive IT operations</div>
+      </div>
+
+      <div class="entry reveal compact">
+        <div class="entry-meta">Apr 2014 — Jun 2016 <span class="dur">· 2 yr 3 mo</span></div>
+        <h3>IT Engineer</h3>
+        <div class="company"><b>GCI Group of Companies</b> · Bengaluru — maintained enterprise Windows &amp; Linux environments, security best practices, and system upgrades</div>
+      </div>
+
+      <div class="entry reveal compact">
+        <div class="entry-meta">Sep 2011 — Dec 2013 <span class="dur">· 2 yr 4 mo</span></div>
+        <h3>Technical Head</h3>
+        <div class="company"><b>CMS Info Systems</b> · Hyderabad Area — led hardware/software troubleshooting team; Best Employee, South Region, India (2012)</div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-head"><span class="idx mono">03</span><h2>Skills</h2><div class="rule"></div></div>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <h4>Cloud &amp; Infrastructure</h4>
+        <div class="stack-tags">
+          <span class="tag">AWS</span><span class="tag">Microsoft Azure</span><span class="tag">GCP</span>
+          <span class="tag">Terraform</span><span class="tag">Ansible</span><span class="tag">Infrastructure as Code</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <h4>DevOps &amp; Automation</h4>
+        <div class="stack-tags">
+          <span class="tag">CI/CD Pipelines</span><span class="tag">Docker</span><span class="tag">Kubernetes</span>
+          <span class="tag">Python</span><span class="tag">Generative AI</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <h4>Monitoring, Security &amp; ITSM</h4>
+        <div class="stack-tags">
+          <span class="tag">Datadog</span><span class="tag">Prometheus</span><span class="tag">IAM</span>
+          <span class="tag">Compliance</span><span class="tag">ITIL</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <h4>Systems Administration</h4>
+        <div class="stack-tags">
+          <span class="tag">Windows Server</span><span class="tag">Active Directory</span>
+          <span class="tag">DNS</span><span class="tag">Linux</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="credentials">
+    <div class="section-head"><span class="idx mono">04</span><h2>Credentials</h2><div class="rule"></div></div>
+    <div class="two-col">
+      <div class="reveal">
+        <h4 class="mono" style="font-size:12px; color:var(--amber); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:16px;">Certifications</h4>
+        <div class="cred-list">
+          <div class="cred"><span class="name">ITIL</span><span class="tick">CERT</span></div>
+          <div class="cred"><span class="name">Gen AI Training Path — Technical Track</span><span class="tick">CERT</span></div>
+          <div class="cred"><span class="name">Innovator</span><span class="tick">CERT</span></div>
+          <div class="cred"><span class="name">Fundamental Analysis of Stocks: Part 1</span><span class="tick">CERT</span></div>
+          <div class="cred"><span class="name">Intraday Trading: Part I</span><span class="tick">CERT</span></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <h4 class="mono" style="font-size:12px; color:var(--amber); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:16px;">Honors &amp; Awards</h4>
+        <div class="cred-list">
+          <div class="cred"><span class="name">Best Employee — South Region, India</span><span class="tick">2012</span></div>
+          <div class="cred"><span class="name">Best Implementor — IPPlan on CentOS</span><span class="tick">AWARD</span></div>
+          <div class="cred"><span class="name">Best IT Services</span><span class="tick">AWARD</span></div>
+          <div class="cred"><span class="name">Pinnacle</span><span class="tick">AWARD</span></div>
+          <div class="cred"><span class="name">Appreciation Award</span><span class="tick">AWARD</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="section-head"><span class="idx mono">05</span><h2>Education</h2><div class="rule"></div></div>
+    <div class="edu-card reveal">
+      <div>
+        <h3>B.Com (Computers)</h3>
+        <p>Sri Krishnadevaraya University · Business / Commerce, General</p>
+      </div>
+      <div class="years mono">2010 — 2013</div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="contact-panel reveal">
+      <h2 class="mono">Website Under Construction</h2>
+      <p>This portfolio is being rebuilt as part of an ongoing learning journey. New projects and content will be added as each milestone is completed.</p>
+      <div class="contact-row">
+        <a class="btn btn-primary" href="mailto:naguruvinaykumar17@gmail.com">naguruvinaykumar17@gmail.com</a>
+        <a class="btn btn-ghost" href="tel:+919618852899">+91 96188 52899</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/vinay-kumar-naguru-04b934140" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> Vinay Kumar Naguru</span>
+      <span>Hyderabad, India</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Theme toggle (day/night)
+  (function(){
+    const root = document.documentElement;
+    const btn = document.getElementById('themeToggle');
+    const icon = document.getElementById('knobIcon');
+    const sunPath = '<circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>';
+    const moonPath = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+
+    function applyTheme(theme){
+      if(theme === 'light'){
+        root.setAttribute('data-theme', 'light');
+        icon.innerHTML = moonPath;
+        btn.setAttribute('aria-pressed', 'true');
+      } else {
+        root.removeAttribute('data-theme');
+        icon.innerHTML = sunPath;
+        btn.setAttribute('aria-pressed', 'false');
+      }
+    }
+
+    let saved = null;
+    try { saved = localStorage.getItem('vkn-theme'); } catch(e){}
+    const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+    applyTheme(saved || (prefersLight ? 'light' : 'dark'));
+
+    btn.addEventListener('click', function(){
+      const isLight = root.getAttribute('data-theme') === 'light';
+      const next = isLight ? 'dark' : 'light';
+      applyTheme(next);
+      try { localStorage.setItem('vkn-theme', next); } catch(e){}
+    });
+  })();
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
