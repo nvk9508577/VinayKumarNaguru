@@ -77,6 +77,25 @@ header .nav nav[aria-label="Main navigation"] a[aria-current="page"]::after { tr
   header .nav nav[aria-label="Main navigation"] a { white-space:normal; font-size:14px !important; }
 }
 
+
+/* FINAL NAV NORMALIZATION: same metrics on every page and active underline */
+header .wrap.nav { display:flex !important; justify-content:space-between !important; align-items:center !important; gap:20px !important; }
+header .wrap.nav > nav[aria-label="Main navigation"] { display:flex !important; align-items:center !important; justify-content:flex-end !important; flex-wrap:nowrap !important; gap:clamp(10px,1.05vw,17px) !important; margin:0 !important; padding:0 !important; font-family:inherit !important; font-size:14px !important; font-weight:500 !important; line-height:1.4 !important; letter-spacing:0 !important; }
+header .wrap.nav > nav[aria-label="Main navigation"] > a,
+header .wrap.nav > nav[aria-label="Main navigation"] > a:link,
+header .wrap.nav > nav[aria-label="Main navigation"] > a:visited,
+header .wrap.nav > nav[aria-label="Main navigation"] > a:active { box-sizing:border-box !important; position:relative !important; display:inline-flex !important; align-items:center !important; flex:0 0 auto !important; min-height:36px !important; margin:0 !important; padding:5px 0 7px !important; border:0 !important; font-family:inherit !important; font-size:14px !important; font-weight:500 !important; line-height:1.4 !important; letter-spacing:0 !important; text-decoration:none !important; white-space:nowrap !important; transform:none !important; color:var(--muted) !important; }
+header .wrap.nav > nav[aria-label="Main navigation"] > a::after { content:"" !important; position:absolute !important; left:0 !important; right:0 !important; bottom:1px !important; height:2px !important; background:var(--accent) !important; border-radius:2px !important; transform:scaleX(0) !important; transform-origin:left center !important; transition:transform .16s ease !important; }
+header .wrap.nav > nav[aria-label="Main navigation"] > a:hover,
+header .wrap.nav > nav[aria-label="Main navigation"] > a:focus-visible,
+header .wrap.nav > nav[aria-label="Main navigation"] > a[aria-current="page"] { color:var(--text) !important; font-size:14px !important; font-weight:500 !important; text-decoration:none !important; }
+header .wrap.nav > nav[aria-label="Main navigation"] > a:hover::after,
+header .wrap.nav > nav[aria-label="Main navigation"] > a:focus-visible::after,
+header .wrap.nav > nav[aria-label="Main navigation"] > a[aria-current="page"]::after { transform:scaleX(1) !important; }
+@media (max-width:1200px) { header .wrap.nav { align-items:flex-start !important; } header .wrap.nav > nav[aria-label="Main navigation"] { flex-wrap:wrap !important; justify-content:flex-start !important; gap:4px 16px !important; } }
+@media (max-width:900px) { header .wrap.nav { flex-direction:column !important; align-items:flex-start !important; } header .wrap.nav > nav[aria-label="Main navigation"] { width:100% !important; flex-wrap:wrap !important; gap:4px 16px !important; } }
+@media (max-width:480px) { header .wrap.nav > nav[aria-label="Main navigation"] { display:grid !important; grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:4px 14px !important; } header .wrap.nav > nav[aria-label="Main navigation"] > a { white-space:normal !important; } }
+
 </style>
 </head>
 <body>
@@ -137,6 +156,31 @@ header .nav nav[aria-label="Main navigation"] a[aria-current="page"]::after { tr
   }
   markCurrent();
   window.addEventListener('hashchange', markCurrent);
+})();
+</script>
+
+
+<script>
+/* Keep the active navigation item correct for pages and homepage section anchors. */
+(() => {
+  const nav = document.querySelector('header nav[aria-label="Main navigation"]');
+  if (!nav) return;
+  const links = [...nav.querySelectorAll('a')];
+  const path = window.location.pathname.replace(/\/+$/, '') || '/';
+  const page = path.split('/').pop() || 'index.html';
+  const hash = window.location.hash;
+  let active = null;
+  if (page === 'projects.html') active = links.find(a => a.getAttribute('href') === 'projects.html');
+  else if (page === 'services.html') active = links.find(a => a.getAttribute('href') === 'services.html');
+  else if (page === 'portal.html') active = links.find(a => a.getAttribute('href') === 'portal.html');
+  else if (page === 'index.html' || page === '') {
+    if (hash) active = links.find(a => a.getAttribute('href') === `index.html${hash}`);
+    if (!active) active = links.find(a => a.getAttribute('href') === 'index.html#top');
+  }
+  links.forEach(a => {
+    if (a === active) a.setAttribute('aria-current', 'page');
+    else a.removeAttribute('aria-current');
+  });
 })();
 </script>
 
