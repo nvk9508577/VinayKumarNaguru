@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Infrastructure Services | Vinay Kumar Naguru</title>
+<meta name="description" content="Infrastructure consulting services: Windows and Linux, cloud operations, identity, security, monitoring, service management and DevOps automation.">
+<style>
+:root{--bg:#101317;--panel:#171c22;--panel2:#1c232b;--line:#2a333d;--text:#edf1f4;--muted:#a5b0ba;--accent:#ff6b35;--gold:#f1c978;--max:1160px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.005em}
+a{color:inherit;text-decoration:none}a:hover{color:var(--accent)}.wrap{width:min(var(--max),calc(100% - 44px));margin:auto}
+header{position:sticky;top:0;z-index:5;background:rgba(16,19,23,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-weight:750;letter-spacing:-.03em}.brand span{color:var(--accent)}nav{display:flex;gap:25px;font-size:.88rem;color:var(--muted)}nav a:hover{color:var(--text)}
+.hero{padding:88px 0 70px;border-bottom:1px solid var(--line);background:radial-gradient(ellipse at 82% 8%,rgba(255,107,53,.10),transparent 32%),linear-gradient(135deg,#101317 50%,#131a20)}
+.eyebrow{font-size:.76rem;text-transform:uppercase;letter-spacing:.18em;color:var(--accent);font-weight:750;display:flex;align-items:center;gap:10px}.eyebrow:before{content:"";width:28px;height:1px;background:var(--accent)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(250px,.7fr);gap:65px;align-items:center}.hero h1{font-size:clamp(2.7rem,6vw,5.4rem);line-height:.99;letter-spacing:-.065em;margin:23px 0 24px;max-width:760px}.hero h1 em{font-style:normal;color:var(--accent)}.lead{max-width:700px;font-size:1.13rem;color:#c4cdd4;line-height:1.8}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 17px;border-radius:8px;border:1px solid var(--line);font-weight:650;font-size:.9rem}.btn.primary{background:var(--accent);color:#211813;border-color:var(--accent)}.btn:hover{transform:translateY(-1px)}.side-note{border:1px solid var(--line);border-radius:16px;padding:23px;background:linear-gradient(145deg,rgba(255,255,255,.04),rgba(255,255,255,.012))}.side-note .label{color:var(--muted);font-size:.75rem;text-transform:uppercase;letter-spacing:.14em}.side-note h2{font-size:1.35rem;line-height:1.35;margin:12px 0}.side-note p{color:var(--muted);font-size:.92rem;margin:0}.availability{display:inline-flex;align-items:center;gap:9px;margin-top:24px;color:#f5d8cb;font-size:.85rem}.dot{height:8px;width:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(241,201,120,.12)}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border-bottom:1px solid var(--line)}.metric{padding:23px 28px;background:var(--bg)}.metric strong{display:block;font-size:1.6rem;letter-spacing:-.04em}.metric span{font-size:.82rem;color:var(--muted)}
+section.content{padding:76px 0;border-bottom:1px solid var(--line)}.section-head{display:grid;grid-template-columns:220px 1fr;gap:35px;margin-bottom:34px}.kicker{color:var(--accent);font-size:.76rem;letter-spacing:.15em;text-transform:uppercase;font-weight:750}.section-head h2{font-size:clamp(1.9rem,4vw,3rem);letter-spacing:-.055em;line-height:1.1;margin:8px 0}.section-head p{max-width:700px;color:var(--muted);margin:10px 0 0}.about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:24px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px}.panel p{color:#c0c9d0;margin-top:0}.focus-list{display:grid;gap:13px}.focus-row{display:flex;justify-content:space-between;gap:15px;border-bottom:1px solid var(--line);padding-bottom:12px}.focus-row:last-child{border:0;padding-bottom:0}.focus-row span{color:var(--muted);font-size:.9rem}.focus-row strong{font-size:.9rem;text-align:right}
+.timeline{position:relative;margin-left:7px}.timeline:before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:1px;background:var(--line)}.job{position:relative;padding:0 0 31px 35px}.job:last-child{padding-bottom:0}.job:before{content:"";position:absolute;left:0;top:8px;width:13px;height:13px;border-radius:50%;background:var(--panel);border:2px solid #687782;z-index:1}.job.current:before{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 5px rgba(241,201,120,.11)}.job-card{border:1px solid var(--line);background:var(--panel);border-radius:13px;padding:22px 24px}.job-top{display:flex;justify-content:space-between;gap:18px;align-items:flex-start}.job h3{font-size:1.13rem;margin:0 0 4px;letter-spacing:-.02em}.company{color:var(--accent);font-weight:650;font-size:.91rem}.date{color:var(--muted);font-size:.78rem;white-space:nowrap}.job p{color:var(--muted);margin:13px 0 0;font-size:.93rem}.tagline{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}.tag{border:1px solid #35424a;border-radius:6px;padding:4px 9px;font-size:.75rem;color:#c8d4d9}
+.skill-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.skill-card{padding:23px;border:1px solid var(--line);border-radius:13px;background:var(--panel)}.skill-card h3{margin:0 0 16px;font-size:1rem}.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{background:var(--panel2);border:1px solid #303b44;padding:7px 10px;border-radius:7px;color:#d3dce1;font-size:.83rem}
+.credential-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}.credential-grid h3{margin:0 0 16px}.credential{display:flex;gap:13px;padding:13px 0;border-bottom:1px solid var(--line)}.credential:last-child{border-bottom:0}.credential-icon{flex:0 0 34px;height:34px;border-radius:8px;display:grid;place-items:center;background:rgba(101,214,196,.1);color:var(--accent);font-weight:800}.credential strong{display:block;font-size:.91rem}.credential small{display:block;color:var(--muted);margin-top:3px}
+.edu{display:flex;justify-content:space-between;gap:18px;align-items:center}.edu h3{margin:0}.edu p{color:var(--muted);margin:5px 0 0}.edu .year{color:var(--muted);font-size:.85rem}
+.contact{padding:62px 0 72px;background:radial-gradient(ellipse at 90% 100%,rgba(101,214,196,.09),transparent 35%)}.contact-grid{display:flex;justify-content:space-between;align-items:center;gap:30px}.contact h2{font-size:clamp(2rem,4vw,3.2rem);line-height:1.1;letter-spacing:-.05em;margin:10px 0}.contact p{color:var(--muted);max-width:600px}.contact-links{display:flex;flex-wrap:wrap;gap:10px}.contact-links a{border:1px solid var(--line);border-radius:8px;padding:11px 14px;font-size:.88rem}
+footer{padding:20px 0;color:#7f8b94;font-size:.8rem}.foot{display:flex;justify-content:space-between;gap:15px}
+@media(max-width:760px){.wrap{width:min(100% - 30px,var(--max))}.nav{height:auto;min-height:66px;align-items:flex-start;padding:18px 0;flex-direction:column}nav{gap:15px;flex-wrap:wrap}.hero{padding:60px 0 45px}.hero-grid,.about-grid,.section-head,.credential-grid{grid-template-columns:1fr;gap:22px}.hero h1{font-size:clamp(2.8rem,13vw,4.3rem)}.side-note{max-width:500px}.metrics{grid-template-columns:1fr}.metric{padding:17px 20px}.metric strong{font-size:1.35rem}.content{padding:54px 0!important}.section-head{margin-bottom:25px}.job-top,.edu,.contact-grid{flex-direction:column;align-items:flex-start}.date{white-space:normal}.skill-grid{grid-template-columns:1fr}.job-card{padding:18px}.contact{padding:48px 0}.foot{flex-direction:column}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+.services-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.service{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:25px;display:flex;flex-direction:column;gap:11px;min-height:260px}.service-head{display:flex;gap:13px;align-items:center}.service-icon{width:44px;height:44px;display:grid;place-items:center;border-radius:10px;background:rgba(101,214,196,.1);color:var(--accent);font-weight:800;font-size:.85rem;flex-shrink:0}.service h3{font-size:1.14rem;line-height:1.3;margin:0}.service p{color:var(--muted);margin:0;font-size:.93rem}.service h4{margin:7px 0 0;color:var(--gold);font-size:.77rem;text-transform:uppercase;letter-spacing:.1em}.service ul{margin:0;padding-left:19px;color:#d0d8dd;font-size:.9rem}.service li{margin:5px 0}.service .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto;padding-top:9px}.service .tags span{font-size:.75rem;border:1px solid #35424a;border-radius:6px;padding:4px 8px;color:#c8d4d9}.service-wide{grid-column:1/-1;min-height:unset}.service-wide .two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px}.service-note{padding:18px 20px;border:1px solid var(--line);background:var(--panel);border-radius:12px;color:var(--muted);font-size:.91rem}@media(max-width:760px){.services-grid{grid-template-columns:1fr}.service-wide{grid-column:auto}.service-wide .two-col{grid-template-columns:1fr}}
+
+/* Shared accessibility and navigation refinements */
+.skip-link{position:absolute;left:12px;top:-60px;z-index:20;background:var(--accent);color:#211813;padding:10px 14px;border-radius:8px;font-weight:750}
+.skip-link:focus{top:12px}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+nav a[aria-current="page"]{color:var(--text);position:relative}
+nav a[aria-current="page"]:after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:2px;background:var(--accent);border-radius:2px}
+@media(max-width:900px){.nav{height:auto;min-height:72px;align-items:flex-start;flex-direction:column;padding:15px 0;gap:12px}nav{width:100%;display:flex;flex-wrap:wrap;gap:9px 16px;font-size:.82rem}nav a[aria-current="page"]:after{bottom:-4px}}
+@media(max-width:480px){nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 12px}nav a{padding:3px 0}}
+
+/* Inline brand marks: embedded locally so logos render without external CDN dependencies. */
+.brand-strip{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:22px 0 6px}.brand-strip-label{width:100%;color:var(--muted);font-size:.76rem;font-weight:750;text-transform:uppercase;letter-spacing:.12em}.brand-badge{display:inline-flex;align-items:center;gap:9px;min-height:46px;padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--text);font-size:.83rem;font-weight:700;white-space:nowrap}.brand-badge svg{width:30px;height:28px;display:block;flex:none}.credential-icon.logo-icon{display:grid;place-items:center;overflow:hidden}.credential-icon.logo-icon svg{width:38px;height:32px;max-width:100%;display:block}.brand-heading{display:flex;align-items:center;gap:10px;margin-bottom:10px}.brand-heading svg{width:34px;height:34px;flex:none}.brand-heading h3{margin:0}.brand-badge:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+
+/* Consistent navigation across every portfolio page */
+nav[aria-label="Main navigation"]{display:flex;align-items:center;flex-wrap:wrap;gap:20px;font-size:.86rem;line-height:1.5;color:var(--muted)}
+nav[aria-label="Main navigation"] a{display:inline-block;position:relative;font-size:inherit;line-height:inherit;text-decoration:none;white-space:nowrap;padding:2px 0 5px;color:inherit}
+nav[aria-label="Main navigation"] a:hover{color:var(--text)}
+nav[aria-label="Main navigation"] a[aria-current="page"],nav[aria-label="Main navigation"] a[aria-current="location"]{color:var(--text)}
+nav[aria-label="Main navigation"] a[aria-current="page"]::after,nav[aria-label="Main navigation"] a[aria-current="location"]::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--accent);border-radius:2px}
+@media(max-width:900px){nav[aria-label="Main navigation"]{width:100%;gap:9px 16px;font-size:.82rem}}
+@media(max-width:480px){nav[aria-label="Main navigation"]{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 12px}nav[aria-label="Main navigation"] a{white-space:normal}}
+</style><meta name="theme-color" content="#101317">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Infrastructure Services | Vinay Kumar Naguru">
+<meta property="og:description" content="Infrastructure consulting services: Windows and Linux, cloud operations, identity, security, monitoring, service management and DevOps automation.">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23101317'/%3E%3Cpath d='M17 46V18h8l14 17V18h8v28h-8L25 29v17z' fill='%23ff6b35'/%3E%3C/svg%3E">
+<style>
+
+/* NAVIGATION FIX: stable typography and clear selected/hover underline */
+header .nav nav[aria-label="Main navigation"] {
+  display:flex !important; align-items:center; flex-wrap:wrap; gap:clamp(10px,1.35vw,20px);
+  font-family:inherit !important; font-size:14px !important; font-weight:500 !important;
+  line-height:1.5 !important; letter-spacing:normal !important; color:var(--muted);
+}
+header .nav nav[aria-label="Main navigation"] a,
+header .nav nav[aria-label="Main navigation"] a:link,
+header .nav nav[aria-label="Main navigation"] a:visited,
+header .nav nav[aria-label="Main navigation"] a:active {
+  position:relative; display:inline-block; flex:0 0 auto; padding:5px 0 7px !important;
+  font-family:inherit !important; font-size:14px !important; font-weight:500 !important;
+  line-height:1.5 !important; letter-spacing:normal !important; text-decoration:none !important;
+  white-space:nowrap; color:var(--muted); transform:none !important;
+}
+header .nav nav[aria-label="Main navigation"] a::after {
+  content:""; position:absolute; left:0; right:0; bottom:0; height:2px;
+  background:var(--accent); border-radius:2px; transform:scaleX(0); transform-origin:left;
+  transition:transform .16s ease;
+}
+header .nav nav[aria-label="Main navigation"] a:hover,
+header .nav nav[aria-label="Main navigation"] a:focus-visible,
+header .nav nav[aria-label="Main navigation"] a[aria-current="page"] {
+  color:var(--text) !important; text-decoration:none !important;
+}
+header .nav nav[aria-label="Main navigation"] a:hover::after,
+header .nav nav[aria-label="Main navigation"] a:focus-visible::after,
+header .nav nav[aria-label="Main navigation"] a[aria-current="page"]::after { transform:scaleX(1); }
+@media(max-width:900px) {
+  header .nav nav[aria-label="Main navigation"] { width:100%; gap:8px 15px; font-size:14px !important; }
+  header .nav nav[aria-label="Main navigation"] a { font-size:14px !important; }
+}
+@media(max-width:480px) {
+  header .nav nav[aria-label="Main navigation"] { display:flex !important; gap:7px 13px; }
+  header .nav nav[aria-label="Main navigation"] a { white-space:normal; font-size:14px !important; }
+}
+
+</style>
+</head><body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header id="top"><div class="wrap nav"><a class="brand" href="index.html#top">VINAY <span>KUMAR NAGURU</span></a><nav aria-label="Main navigation"><a href="index.html#top">Home</a><a href="index.html#about">About</a><a href="index.html#experience">Experience</a><a href="index.html#skills">Capabilities</a><a href="projects.html">Home Lab &amp; Projects</a><a href="services.html" aria-current="page">Services</a><a href="index.html#certifications">Certifications</a><a href="portal.html">Personal Portal</a><a href="index.html#contact">Contact</a></nav></div></header>
+<main id="main-content">
+<section class="hero"><div class="wrap hero-grid"><div><div class="eyebrow">IT Infrastructure Consulting</div><h1>Reliable IT.<br><em>Practical solutions.</em></h1><p class="lead">Infrastructure services focused on keeping business systems available, secure, supportable and easier to operate. From core Windows and Linux services to cloud platforms, endpoint protection and automation, the work starts with the business need and ends with a documented, validated outcome.</p><div class="actions"><a class="btn primary" href="#services">Explore services ↓</a><a class="btn" href="mailto:naguruvinaykumar17@gmail.com">Discuss a requirement ↗</a></div></div><aside class="side-note"><div class="label">Service approach</div><h2>Assess the issue. Restore service. Reduce repeat incidents.</h2><p>Practical troubleshooting, change discipline, clear communication and handover documentation.</p><div class="availability"><span class="dot"></span> Hyderabad, India</div></aside></div></section>
+<section class="content" id="services"><div class="wrap"><div class="section-head"><div><div class="kicker">01 / Service catalogue</div><h2>What I can help with</h2></div><p>Defined service areas and typical deliverables — similar to a business service catalogue. Each engagement is scoped to the environment, access available and agreed outcome.</p></div>
+<div class="services-grid">
+<article class="service"><div class="service-head"><div class="service-icon">SYS</div><h3>Windows & Linux Administration</h3></div><p>Administration and troubleshooting for business servers and operating systems, with attention to stability, access, patching and operational readiness.</p><h4>Service coverage</h4><ul><li>Server health and service troubleshooting</li><li>OS patching coordination and post-patch validation</li><li>Disk, CPU, memory and performance checks</li><li>Log review, service recovery and runbook updates</li></ul><div class="tags"><span>Windows Server</span><span>Linux</span><span>Patch management</span></div></article>
+<article class="service"><div class="service-head"><div class="service-icon">IAM</div><h3>Active Directory & Access Management</h3></div><p>Identity and access support to help users reach the right systems with the right level of privilege.</p><h4>Service coverage</h4><ul><li>User, group and access troubleshooting</li><li>Group Policy, DNS and domain-join issue triage</li><li>File and folder permission analysis</li><li>Privileged access review support and least-privilege guidance</li></ul><div class="tags"><span>Active Directory</span><span>Group Policy</span><span>RBAC</span></div></article>
+<article class="service"><div class="service-head"><div class="service-icon">CLD</div><h3>Cloud Infrastructure Operations</h3></div><p>Operational support and foundational troubleshooting across public cloud environments, based on the services and permissions available.</p><h4>Service coverage</h4><ul><li>Instance connectivity and access troubleshooting</li><li>Cloud networking, route and security-rule checks</li><li>IAM and resource-permission issue triage</li><li>Resource health, backup and operational review support</li></ul><div class="tags"><span>AWS</span><span>Azure</span><span>OCI</span><span>GCP</span></div></article>
+<article class="service"><div class="service-head"><div class="service-icon">NET</div><h3>Network & Connectivity Troubleshooting</h3></div><p>Structured isolation of connectivity problems across endpoint, DNS, routing, firewall and application layers.</p><h4>Service coverage</h4><ul><li>DNS resolution and IP configuration checks</li><li>Port reachability and service-listener checks</li><li>VPN, route, subnet and firewall-rule triage</li><li>Evidence collection for network or application escalation</li></ul><div class="tags"><span>DNS / DHCP</span><span>TCP/IP</span><span>VPN</span><span>Firewall</span></div></article>
+<article class="service"><div class="service-head"><div class="service-icon">SEC</div><h3>Endpoint Security & EDR Coordination</h3></div><p>Support for investigating endpoint protection alerts and policy-related disruptions in coordination with security owners.</p><h4>Service coverage</h4><ul><li>Collect alert, process, host and timestamp details</li><li>Review policy changes and endpoint health</li><li>Distinguish connectivity, agent and policy symptoms</li><li>Coordinate approved exclusions or remediation and verify outcome</li></ul><div class="tags"><span>EDR</span><span>Security operations</span><span>Audit trail</span></div></article>
+<article class="service"><div class="service-head"><div class="service-icon">OPS</div><h3>Monitoring & Incident Management</h3></div><p>Improve the response process by using monitoring signals, clear ownership and useful incident records.</p><h4>Service coverage</h4><ul><li>Alert triage and impact assessment</li><li>Incident updates, escalation and handover</li><li>Problem analysis and repeat-incident follow-up</li><li>Runbooks, knowledge articles and post-incident actions</li></ul><div class="tags"><span>Monitoring</span><span>ITIL</span><span>RCA</span><span>SLAs</span></div></article>
+<article class="service"><div class="service-head"><div class="service-icon">DEV</div><h3>Automation & DevOps Support</h3></div><p>Reduce repetitive manual work through small, maintainable scripts and infrastructure tooling, with version control and safe validation.</p><h4>Service coverage</h4><ul><li>Basic Bash and Python operational scripts</li><li>Git-based change tracking</li><li>Ansible and Terraform workflow support</li><li>Docker, CI/CD and deployment failure triage</li></ul><div class="tags"><span>Git</span><span>Python / Bash</span><span>Ansible</span><span>Terraform</span><span>Docker</span></div></article>
+<article class="service"><div class="service-head"><div class="service-icon">M365</div><h3>Microsoft 365 & User Productivity</h3></div><p>Help troubleshoot common user productivity and access issues while coordinating with identity and service owners.</p><h4>Service coverage</h4><ul><li>Sign-in and access issue triage</li><li>Basic service health and client configuration checks</li><li>Mailbox or collaboration issue escalation with evidence</li><li>User communication and resolution confirmation</li></ul><div class="tags"><span>Microsoft 365</span><span>Identity</span><span>User support</span></div></article>
+<article class="service service-wide"><div class="service-head"><div class="service-icon">ITSM</div><h3>Change, Patch & Operational Readiness</h3></div><p>Structured execution around production changes to reduce avoidable risk and make outcomes traceable.</p><div class="two-col"><div><h4>Before and during the change</h4><ul><li>Confirm scope, dependencies, impact and approval</li><li>Define pre-checks, implementation steps and rollback criteria</li><li>Coordinate stakeholder communication and maintenance windows</li></ul></div><div><h4>After the change</h4><ul><li>Validate service health and user-facing functionality</li><li>Monitor for regressions and record exceptions</li><li>Update tickets, runbooks and follow-up actions</li></ul></div></div><div class="tags"><span>Change management</span><span>Patch management</span><span>Documentation</span><span>ITIL V3</span></div></article>
+</div></div></section>
+<section class="content"><div class="wrap"><div class="section-head"><div><div class="kicker">02 / Engagement</div><h2>How service delivery works</h2></div><p>Not a promise of end-to-end ownership for every platform. Scope is agreed first, and work is performed within approved access, change controls and the customer's operating model.</p></div><div class="skill-grid"><div class="skill-card"><h3>01 · Understand</h3><p style="color:var(--muted)">Clarify the symptom, affected users, business impact, recent changes and success criteria.</p></div><div class="skill-card"><h3>02 · Diagnose</h3><p style="color:var(--muted)">Use logs, configuration, health checks and a layered troubleshooting path to narrow the cause.</p></div><div class="skill-card"><h3>03 · Remediate</h3><p style="color:var(--muted)">Apply an approved, proportionate fix; escalate specialist tasks when they fall outside the agreed scope.</p></div><div class="skill-card"><h3>04 · Validate & hand over</h3><p style="color:var(--muted)">Confirm service restoration, document what changed and share prevention or follow-up actions.</p></div></div><div class="service-note" style="margin-top:20px">The listed services describe areas of capability and potential support. Specific deliverables, technologies, service levels and ownership should be agreed for each customer engagement.</div></div></section>
+<section class="contact" id="contact"><div class="wrap contact-grid"><div><div class="eyebrow">Let’s discuss a requirement</div><h2>Infrastructure support with clear scope.</h2><p>For infrastructure operations, cloud support, access troubleshooting, security coordination or automation-related work.</p></div><div class="contact-links"><a href="mailto:naguruvinaykumar17@gmail.com">Email ↗</a><a href="https://www.linkedin.com/in/vinay-kumar-naguru-04b934140" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="index.html">Main portfolio ↗</a></div></div></section>
+</main><footer><div class="wrap foot"><span>© 2026 Vinay Kumar Naguru</span><span>Infrastructure · Cloud · Security · DevOps</span></div></footer>
+<script>
+(function () {
+  const nav = document.querySelector('nav[aria-label="Main navigation"]');
+  if (!nav) return;
+  const links = Array.from(nav.querySelectorAll('a'));
+  function markCurrent() {
+    const path = window.location.pathname.split('/').pop() || 'index.html';
+    const hash = window.location.hash;
+    let target = null;
+    if (path === 'projects.html') target = links.find(a => a.getAttribute('href') === 'projects.html');
+    else if (path === 'services.html') target = links.find(a => a.getAttribute('href') === 'services.html');
+    else if (path === 'portal.html') target = links.find(a => a.getAttribute('href') === 'portal.html');
+    else if (path === 'index.html' || path === '') {
+      if (hash) target = links.find(a => a.getAttribute('href') === 'index.html' + hash);
+      if (!target) target = links.find(a => a.getAttribute('href') === 'index.html#top');
+    }
+    links.forEach(a => a.removeAttribute('aria-current'));
+    if (target) target.setAttribute('aria-current', 'page');
+  }
+  markCurrent();
+  window.addEventListener('hashchange', markCurrent);
+})();
+</script>
+
+</body></html>

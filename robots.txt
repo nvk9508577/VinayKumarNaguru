@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vinaykumarnaguru.com/sitemap.xml
