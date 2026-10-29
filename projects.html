@@ -23,6 +23,15 @@ nav a[aria-current="page"]:after{content:"";position:absolute;left:0;right:0;bot
 
 /* Inline brand marks: embedded locally so logos render without external CDN dependencies. */
 .brand-strip{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:22px 0 6px}.brand-strip-label{width:100%;color:var(--muted);font-size:.76rem;font-weight:750;text-transform:uppercase;letter-spacing:.12em}.brand-badge{display:inline-flex;align-items:center;gap:9px;min-height:46px;padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--text);font-size:.83rem;font-weight:700;white-space:nowrap}.brand-badge svg{width:30px;height:28px;display:block;flex:none}.credential-icon.logo-icon{display:grid;place-items:center;overflow:hidden}.credential-icon.logo-icon svg{width:38px;height:32px;max-width:100%;display:block}.brand-heading{display:flex;align-items:center;gap:10px;margin-bottom:10px}.brand-heading svg{width:34px;height:34px;flex:none}.brand-heading h3{margin:0}.brand-badge:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+
+/* Consistent navigation across every portfolio page */
+nav[aria-label="Main navigation"]{display:flex;align-items:center;flex-wrap:wrap;gap:20px;font-size:.86rem;line-height:1.5;color:var(--muted)}
+nav[aria-label="Main navigation"] a{display:inline-block;position:relative;font-size:inherit;line-height:inherit;text-decoration:none;white-space:nowrap;padding:2px 0 5px;color:inherit}
+nav[aria-label="Main navigation"] a:hover{color:var(--text)}
+nav[aria-label="Main navigation"] a[aria-current="page"],nav[aria-label="Main navigation"] a[aria-current="location"]{color:var(--text)}
+nav[aria-label="Main navigation"] a[aria-current="page"]::after,nav[aria-label="Main navigation"] a[aria-current="location"]::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--accent);border-radius:2px}
+@media(max-width:900px){nav[aria-label="Main navigation"]{width:100%;gap:9px 16px;font-size:.82rem}}
+@media(max-width:480px){nav[aria-label="Main navigation"]{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 12px}nav[aria-label="Main navigation"] a{white-space:normal}}
 </style><meta name="theme-color" content="#101317">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Home Lab & Projects | Vinay Kumar Naguru">
