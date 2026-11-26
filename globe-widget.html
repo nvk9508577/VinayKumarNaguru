@@ -1,0 +1,102 @@
+<!-- ===== Globe widget: paste this block where you want the globe. Self-contained, no external files. =====
+     data-theme="auto" picks light or dark colours from the background behind it.
+     Use data-theme="dark" (for dark backgrounds) or "light" (for white backgrounds) to force it. -->
+<div class="vk-globe" data-theme="auto" role="img" aria-label="Rotating globe with arcs from Hyderabad to cities around the world">
+  <canvas></canvas>
+</div>
+
+<style>
+/* Everything is scoped to .vk-globe, so it won't affect the rest of your page. */
+.vk-globe{
+  --vk-accent:#ff6a13;      /* arc + Hyderabad marker colour */
+  /* Optional: --vk-ink:R,G,B;  forces the dot/outline colour (otherwise chosen automatically) */
+  position:relative;width:100%;max-width:520px;aspect-ratio:1/1;margin:0 auto;
+}
+.vk-globe canvas{width:100%;height:100%;display:block;pointer-events:none} /* never blocks scrolling or taps */
+</style>
+
+<script>
+(function(){
+  var D=Math.PI/180, reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* Edit this list to change where the arcs go: [latitude, longitude] */
+  var CITIES=[[51.5,-.13],[55.75,37.6],[25.2,55.3],[30,31.2],[6.5,3.4],[-1.29,36.8],[-26.2,28],
+              [1.35,103.8],[35.7,139.7],[-33.9,151.2],[40.7,-74],[43.65,-79.4],[37.8,-122.4],[19.4,-99.1],[-23.55,-46.6]];
+  var ORIGIN=[17.385,78.487]; /* Hyderabad */
+
+  function V(a,b){return[Math.cos(a*D)*Math.sin(b*D),Math.sin(a*D),Math.cos(a*D)*Math.cos(b*D)]}
+  var H=V(ORIGIN[0],ORIGIN[1]);
+  var dest=CITIES.map(function(c){return V(c[0],c[1])});
+
+  /* Continents: compact land mask built from Natural Earth data (2-degree dot grid) */
+  var M=atob("//v/8///j+f/8P8v//4f4H///Ae+B///+AAhgf///+AAAgA////4AAAQAAXz//AAAAAAAAQD3gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAAAADgAAAAAAAAAAAAAAAAAADgAAAAAAAAAAAAAAAAAAAOAAAAAAAAAAAAAGAAAAAABwAAAAAAAAAAAAQBAAAAAAA4AAAAAAAAAAAABACAAAAAAB8AAAAAAAAAAAAAAAgAAAAAAH4AAAAAAAAAAAADwAAAAAAAAD8AAAAAAAAAAAEB+AAAAAAAAAP8AAAADwAAAAAHh/AAAAAAAAAD/gAAAAfAAAAAA//8AAAAAAAAAH/gAAAA/AAAAAAf/+AAAAAAAAAA/4AAAAP8AAAAAD//4AAAAAAAAAB/4AAAAf8MAAAAD//8AAAAAAAAAAf/gAAAD/hgAAAAf//gAAAAAAAAAB//gAAAP/DgAAAAP//AAAAAAAAAAA//wAAAH/wwAAAAA//AAAAAAAAAAAP/+AAAA//nAAAAAB/cAAAAAAAAAAD//8AAAB//iAAAAAB8YAAAAAAAAAAD//+AAAA//hAAAAAAHIAAAAAAAAAAB///gAAAP/4AAAAAAABAAAAAAAAAAAP///AAAB//gAAAAAAAFgAAAAAAAAAA///8AAAD/+AAAAAPAA+EAAAAAAAAAD///wAAAP/8AAAAAgEB4AAAAAAAAAAD///AAAAf/8AAAABnYrgAAAAAAAAAAD//4AAAA//+AAAADHgYAAAAAAAAAAAD//gAAAAf//AAAAGHoAAAAAAAAAAAAB//gAAAAf//gAAAFDgAAAAAAAAAAAAB/+AAAGj///wAAAWBgAAAAAAAAAAAAD/gAAAf////gACAIAIAAAAAAAAAAAAf+AAAD/////AAQAAAAAAAAAAAAAAAIOAAAAf////MADABwIAAAAAAAAAAADAAAAAP////oABwC8GAAAAAAAAAAAPgAAAAH////uABwD8EAAAAAAAAAAD8AAAAAP///+/AHgfgIAAAAABAAAA8wEAAAB////v8B+H6AAAAAAAAAAAeIYAAAA////v+A/n9AAAAAAAAAAA8BAAAAB///+f8H///oAAAAAAAAAPgAAAAAH///v6D///6AAAAAAAAAvwIAAAAH///fn////wAAAAAAAAB/BAAAAAf///7////+AAAAAAAAF//AAAAAf/O//////4AAAAAAAA//8AAAAD/gD/////8IAAAAAAB//+AAAAD+AH/////i8AAAAAAf//gAAADjAf8////5EAAAAAA///gAAAPAr/n///8QgAAAAAf//4AAAHF93n////gAAAAAD///AAAB4vBn////xgAAAAD///QAAB99c/////AAAAAD//9EAAD/+/////8AAAAAf//yAAD///////4AAAAP///AAB///////8AAAA//38AAr//////8IAAB//vwADA/////4GAAB/+PAAEZ/////ggBh/8PAAA5////+CAf//DBAA7/////MH//wRgAb/////9f//cYYNv////5//5nAD7////H+lR8A4H//+AGOPgAV/+AAzj4AI/gAA8fAAOIABvwAEAAN4gAAB+AQALAAAAAAA="),land=[],bi=0,i0,j0;
+  for(i0=0;i0<90;i0++){var lt=-89+2*i0,nn=Math.max(3,Math.round(180*Math.cos(lt*D)));
+    for(j0=0;j0<nn;j0++,bi++){if(M.charCodeAt(bi>>3)>>(7-(bi&7))&1)land.push(V(lt,-180+(j0+.5)*360/nn))}}
+
+  function arc(b){var o=Math.acos(H[0]*b[0]+H[1]*b[1]+H[2]*b[2]),s=Math.sin(o),p=[];
+    for(var i=0;i<=48;i++){var t=i/48,a=Math.sin((1-t)*o)/s,c=Math.sin(t*o)/s,r=1+.4*Math.sin(Math.PI*t)*o/Math.PI;
+      p.push([(a*H[0]+c*b[0])*r,(a*H[1]+c*b[1])*r,(a*H[2]+c*b[2])*r])}return p}
+  var arcs=dest.map(arc);
+
+  function init(el){
+    var C=el.querySelector("canvas"),x=C.getContext("2d");
+    var g,ac;
+    function bgIsDark(){ /* walk up to the first visible background; the browser default is white */
+      for(var n=el;n&&n.nodeType===1;n=n.parentElement){
+        var m=getComputedStyle(n).backgroundColor.match(/[\d.]+/g);
+        if(m&&(m.length<4||+m[3]>.5))return(.299*m[0]+.587*m[1]+.114*m[2])<140;
+      }
+      return false;
+    }
+    function colors(){
+      var cs=getComputedStyle(el),mode=el.getAttribute("data-theme")||"auto",custom=cs.getPropertyValue("--vk-ink").trim();
+      var dark=mode==="dark"||(mode==="auto"&&bgIsDark());
+      g=custom||(dark?"200,215,240":"30,41,70");
+      ac=cs.getPropertyValue("--vk-accent").trim()||"#ff6a13";
+    }
+    colors();
+    var th=-ORIGIN[1]*D,tilt=.38,last=0,W=0,R=0,c0=0,running=false,visible=true;
+
+    function P(p){var ct=Math.cos(th),st=Math.sin(th),x1=p[0]*ct+p[2]*st,z1=-p[0]*st+p[2]*ct,
+      cy=Math.cos(tilt),sy=Math.sin(tilt);return[x1,p[1]*cy-z1*sy,p[1]*sy+z1*cy]}
+    function vis(q){return q[2]>0||q[0]*q[0]+q[1]*q[1]>1}
+    function S(q){return[c0+R*q[0],c0-R*q[1]]}
+
+    function draw(now){
+      var w=el.clientWidth,d=Math.min(devicePixelRatio||1,2);if(!w)return;
+      if(W!==w){W=w;C.width=C.height=Math.round(w*d)}
+      R=w*.36;c0=w/2;x.setTransform(d,0,0,d,0,0);x.clearRect(0,0,w,w);
+      var at=x.createRadialGradient(c0,c0,R*.9,c0,c0,R*1.28);at.addColorStop(0,"rgba("+g+",.16)");at.addColorStop(1,"rgba("+g+",0)");
+      x.fillStyle=at;x.beginPath();x.arc(c0,c0,R*1.28,0,7);x.fill();
+      x.fillStyle="rgba("+g+",.05)";x.strokeStyle="rgba("+g+",.35)";x.lineWidth=1.2;x.beginPath();x.arc(c0,c0,R,0,7);x.fill();x.stroke();
+      var lp=land.map(P);
+      x.fillStyle="rgba("+g+",.3)";lp.forEach(function(q){if(q[2]>0&&q[2]<=.45){var s=S(q);x.fillRect(s[0]-.8,s[1]-.8,1.6,1.6)}});
+      x.fillStyle="rgba("+g+",.8)";lp.forEach(function(q){if(q[2]>.45){var s=S(q);x.fillRect(s[0]-1,s[1]-1,2,2)}});
+      x.lineCap="round";
+      arcs.forEach(function(A,i){
+        var pts=A.map(P),pen=false;x.strokeStyle=ac;x.globalAlpha=.28;x.lineWidth=1.5;x.beginPath();
+        pts.forEach(function(q){if(vis(q)){var s=S(q);pen?x.lineTo(s[0],s[1]):x.moveTo(s[0],s[1]);pen=true}else pen=false});x.stroke();
+        var head=((now/3200)+i*.11)%1.4,a=Math.max(0,Math.floor((head-.3)*48)),b=Math.min(48,Math.floor(head*48));
+        x.globalAlpha=1;x.lineWidth=2.6;x.beginPath();pen=false;
+        for(var k=a;k<=b;k++){var q=pts[k];if(vis(q)){var s=S(q);pen?x.lineTo(s[0],s[1]):x.moveTo(s[0],s[1]);pen=true}else pen=false}x.stroke()});
+      x.globalAlpha=1;
+      dest.forEach(function(p){var q=P(p);if(q[2]>0){var s=S(q);x.fillStyle="rgba("+g+",.85)";x.beginPath();x.arc(s[0],s[1],3,0,7);x.fill()}});
+      var h=P(H);if(h[2]>0){var s=S(h),r=6+3*Math.sin(now/400);x.fillStyle=ac;x.beginPath();x.arc(s[0],s[1],5,0,7);x.fill();
+        x.strokeStyle=ac;x.globalAlpha=.4;x.beginPath();x.arc(s[0],s[1],r+4,0,7);x.stroke();x.globalAlpha=1}
+    }
+    function loop(now){
+      if(!running)return;
+      th+=(now-last)*.00012;last=now;draw(now);requestAnimationFrame(loop);
+    }
+    function start(){if(running||reduce||!visible)return;colors();running=true;last=performance.now();requestAnimationFrame(loop)}
+    function stop(){running=false}
+
+    if(reduce){draw(0);if(window.ResizeObserver)new ResizeObserver(function(){draw(0)}).observe(el);return}
+    if(window.IntersectionObserver)new IntersectionObserver(function(e){visible=e[0].isIntersecting;visible?start():stop()}).observe(el);
+    document.addEventListener("visibilitychange",function(){document.hidden?stop():start()});
+    start();
+  }
+  document.querySelectorAll(".vk-globe").forEach(init);
+})();
+</script>
+<!-- ===== End globe widget ===== -->
